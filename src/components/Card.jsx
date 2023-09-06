@@ -1,4 +1,4 @@
-import {useNavigate,useLocation} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import { useState, useEffect } from "react";
 import { addFav, removeFav } from "../redux/actions";
 import { connect } from "react-redux";
@@ -9,13 +9,13 @@ import { connect } from "react-redux";
 
 function Card(props) {
   const navigate = useNavigate();
-  const {character, myFavorites,addFav,removeFav,  onClose,  } = props;
+  const {character, myFavorites,addFav,removeFav,  onClose, } = props;
   const [isFav, setFav] = useState(false);
  
   function navigateHandler() {
     navigate(`/detail/${character.id}`);
   }
- const location = useLocation()
+//  const location = useLocation()
 
   useEffect(() => {
     myFavorites.forEach((fav) => {

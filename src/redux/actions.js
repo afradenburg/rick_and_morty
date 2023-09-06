@@ -1,4 +1,4 @@
-import { ADD_FAV, REMOVE_FAV} from "./actionsTypes"
+import { RESET, ADD_FAV, REMOVE_FAV, FILTER, ORDER} from "./actionsTypes"
 
 
 
@@ -16,3 +16,20 @@ export const removeFav =(id)=>{
       };
     }
     
+export const filterCards = (gender)=>{
+  return{
+    type: FILTER,
+    payload: gender
+  }
+}
+export const orderCards = (order)=>{
+  return{
+    type: ORDER,
+    payload: order
+  }
+}
+export function reset() {
+  return {
+    type: RESET,
+  };
+}
