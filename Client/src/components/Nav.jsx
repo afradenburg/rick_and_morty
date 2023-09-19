@@ -1,6 +1,8 @@
 import SearchBar from "./SearchBar";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import { Buttone } from "./button";
+
 function Nav({ onSearch, randomize, logOut, isActiveButtons }) {
   const location = useLocation();
 
@@ -12,13 +14,13 @@ function Nav({ onSearch, randomize, logOut, isActiveButtons }) {
       <SearchBar onSearch={onSearch} isActiveButtons={isActiveButtons} />
       {location.pathname === "/home" && isActiveButtons ? (
         <>
-          <button onClick={randomize}>ADD RANDOM</button>
+          <Buttone onClick={randomize}>ADD RANDOM</Buttone>
           
         </>
       ) : (
         ""
       )}
-      <button onClick={logOut}>log out</button>
+      <Buttone onClick={logOut}>log out</Buttone>
     </div>
   );
 }

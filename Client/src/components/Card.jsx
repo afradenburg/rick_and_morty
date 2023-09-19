@@ -2,7 +2,9 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { addFav, removeFav } from "../redux/actions";
 import { connect } from "react-redux";
-
+import { Image, CardStyle } from "./card.Styled";
+import { Buttone } from "./button";
+import { CardContainer } from "./cardContainer";
 function Card(props) {
   const navigate = useNavigate();
   const { character, myFavorites, addFav, removeFav, onClose, isActiveButtons } =props;
@@ -29,48 +31,51 @@ function Card(props) {
       setFav(false);
     }
   }
-
-  return (
-    <div>
-      {isFav ? (
-        <button
+    return (
+      <CardContainer>
+        <CardStyle>
+          
+        {isFav ? (
+          <Buttone
           onClick={() => {
             handleFavorite(character.id);
           }}
-        >
-          ❤️
-        </button>
-      ) : (
-        <button
+          >
+            ❤️
+          </Buttone>
+        ) : (
+          <Buttone
           onClick={() => {
             handleFavorite(character);
           }}
-        >
-          🤍
-        </button>
-      )}
-      {isActiveButtons ? (
-        <button
+          >
+            🤍
+          </Buttone>
+        )}
+        {isActiveButtons ? (
+          <Buttone
           onClick={() => {
             onClose(character.id);
           }}
-        >
-          X
-        </button>
-      ) : (
-        ""
-      )}
-      <h2>Name: {character.name}</h2>
-      <h2>Species: {character.species}</h2>
-      <h2>Gender: {character.gender}</h2>
-      <img
-        src={character.image}
-        alt={character.name}
-        onClick={navigateHandler}
-      />
-    </div>
-  );
-}
+          >
+            X
+          </Buttone>
+        ) : (
+          ""
+          )}
+        <h2>Name: {character.name}</h2>
+        <h2>Species: {character.species}</h2>
+        <h2>Gender: {character.gender}</h2>
+        <Image
+          src={character.image}
+          alt={character.name}
+          onClick={navigateHandler}
+          />
+          </CardStyle>
+      </CardContainer>
+    );
+  };
+
 
 const mapDispatchToProps = (dispatch) => {
   return {

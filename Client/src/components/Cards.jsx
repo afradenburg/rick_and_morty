@@ -1,6 +1,6 @@
 import Card from "./Card";
 
-export default function Cards({ characters, onClose, isActiveButtons, hola }) {
+export default function Cards({ characters, onClose, isActiveButtons }) {
   return (
     <div>
       {characters.map((character) => (
@@ -8,8 +8,7 @@ export default function Cards({ characters, onClose, isActiveButtons, hola }) {
           key={character.id}
           character={character}
           onClose={onClose}
-          isActiveButtons={isActiveButtons}
-          hola={hola}
+          isActiveButtons={isActiveButtons}  
         />
       ))}
     </div>
