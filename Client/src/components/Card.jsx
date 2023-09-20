@@ -2,12 +2,21 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { addFav, removeFav } from "../redux/actions";
 import { connect } from "react-redux";
-import { Image, CardStyle } from "./card.Styled";
-import { Buttone } from "./button";
-import { CardContainer } from "./cardContainer";
+import { Image, CardStyle } from "../styled/cardStyled";
+import { Button } from "../styled/button";
+import { ButtonContainer } from "../styled/buttonContainer";
+
+
 function Card(props) {
   const navigate = useNavigate();
-  const { character, myFavorites, addFav, removeFav, onClose, isActiveButtons } =props;
+  const {
+    character,
+    myFavorites,
+    addFav,
+    removeFav,
+    onClose,
+    isActiveButtons,
+  } = props;
   const [isFav, setFav] = useState(false);
 
   function navigateHandler() {
@@ -31,51 +40,50 @@ function Card(props) {
       setFav(false);
     }
   }
-    return (
-      <CardContainer>
-        <CardStyle>
-          
-        {isFav ? (
-          <Buttone
+  return (
+    <CardStyle>
+        <ButtonContainer>
+      {isFav ? (
+<Button
           onClick={() => {
             handleFavorite(character.id);
           }}
-          >
-            ❤️
-          </Buttone>
-        ) : (
-          <Buttone
+        >
+          ❤️
+        </Button>
+      ) : (
+        <Button
           onClick={() => {
             handleFavorite(character);
           }}
-          >
-            🤍
-          </Buttone>
-        )}
-        {isActiveButtons ? (
-          <Buttone
+        >
+          🤍
+        </Button>
+      )}
+      {isActiveButtons ? (
+        <Button
           onClick={() => {
             onClose(character.id);
           }}
-          >
-            X
-          </Buttone>
-        ) : (
-          ""
-          )}
-        <h2>Name: {character.name}</h2>
-        <h2>Species: {character.species}</h2>
-        <h2>Gender: {character.gender}</h2>
-        <Image
-          src={character.image}
-          alt={character.name}
-          onClick={navigateHandler}
-          />
-          </CardStyle>
-      </CardContainer>
-    );
-  };
-
+        >
+          X
+        </Button>
+      ) : (
+        ""
+      )}
+        </ButtonContainer>
+        
+      <h2>Name: {character.name}</h2>
+      <h2>Species: {character.species}</h2>
+      <h2>Gender: {character.gender}</h2>
+      <Image
+        src={character.image}
+        alt={character.name}
+        onClick={navigateHandler}
+      />
+    </CardStyle>
+  );
+}
 
 const mapDispatchToProps = (dispatch) => {
   return {

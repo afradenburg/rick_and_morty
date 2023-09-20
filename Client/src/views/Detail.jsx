@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { DetailStyle } from "../styled/detailStyle";
+import { ImgStyled } from "../styled/imageStyled";
 
 function Detail() {
   const [character, setCharacter] = useState({});
@@ -21,10 +23,11 @@ function Detail() {
   }, []);
 
   return (
+    <DetailStyle>
     <div>
       <div>
         <h2>{character.name}</h2>
-        <img src={character.image} alt={character.name} />
+        <ImgStyled src={character.image} alt={character.name} />
       </div>
       <div>
         <div>
@@ -49,6 +52,7 @@ function Detail() {
         </div>
       </div>
     </div>
+    </DetailStyle>
   );
 }
 

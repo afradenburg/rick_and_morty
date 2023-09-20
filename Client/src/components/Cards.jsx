@@ -1,8 +1,9 @@
+import { CardContainer } from "../styled/cardContainer.Styled";
 import Card from "./Card";
 
 export default function Cards({ characters, onClose, isActiveButtons }) {
   return (
-    <div>
+    <CardContainer>
       {characters.map((character) => (
         <Card
           key={character.id}
@@ -11,6 +12,6 @@ export default function Cards({ characters, onClose, isActiveButtons }) {
           isActiveButtons={isActiveButtons}  
         />
       ))}
-    </div>
+    </CardContainer>
   );
 }

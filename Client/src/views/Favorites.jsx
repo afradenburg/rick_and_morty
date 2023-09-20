@@ -1,6 +1,8 @@
 import { connect, useDispatch } from "react-redux";
 import Cards from "../components/Cards";
 import { filterCards, orderCards, reset } from "../redux/actions";
+import { FilterStyle, OptionStyled, SelectStyled } from "../styled/selectFavorites";
+import { Button } from "../styled/button";
 
 const Favorites = ({ myFavorites }) => {
   const dispatch = useDispatch();
@@ -19,19 +21,24 @@ const Favorites = ({ myFavorites }) => {
 
   return (
     <div>
-      <select onChange={handleOrder}>
-        <option value="A">Ascendente</option>
-        <option value="B">Descendente</option>
-      </select>
 
-      <select onChange={handleFilter}>
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
-        <option value="Gender less">Gender less</option>
-        <option value="unknown">unknown</option>
-      </select>
-      <button onClick={resetHandler}>RESET</button>
+    <FilterStyle>
+      <SelectStyled onChange={handleOrder}>
+        <OptionStyled value="A">Ascendente</OptionStyled>
+        <OptionStyled value="B">Descendente</OptionStyled>
+      </SelectStyled>
+
+      <SelectStyled onChange={handleFilter}>
+        <OptionStyled value="Male">Male</OptionStyled>
+        <OptionStyled value="Female">Female</OptionStyled>
+        <OptionStyled value="Gender less">Gender less</OptionStyled>
+        <OptionStyled value="unknown">unknown</OptionStyled>
+      </SelectStyled>
+      <Button onClick={resetHandler}>RESET</Button>
+    </FilterStyle>
+    <div>
       <Cards characters={myFavorites} isActiveButtons={false} />
+    </div>
     </div>
   );
 };

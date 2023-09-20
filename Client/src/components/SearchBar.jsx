@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
+import { InputStyled } from "../styled/inputStyled";
+import { Button } from "../styled/button";
+import { FlexContainer } from "../styled/searchItems";
 
 export default function SearchBar({ onSearch, isActiveButtons }) {
   const [id, setId] = useState("");
@@ -11,28 +14,31 @@ export default function SearchBar({ onSearch, isActiveButtons }) {
 
   return (
     <div>
+      <FlexContainer>
+      
       {isActiveButtons && location.pathname === "/home" ? (
-        <input
-          type="search"
-          onChange={changeHandler}
-          value={id}
-          placeholder="Search Character"
+        <InputStyled
+        type="search"
+        onChange={changeHandler}
+        value={id}
+        placeholder="Search Character"
         />
-      ) : (
-        ""
-      )}
+        ) : (
+          ""
+          )}
 
       {isActiveButtons && location.pathname === "/home" ? (
-        <button
-          onClick={() => {
-            onSearch(id);
-          }}
+        <Button
+        onClick={() => {
+          onSearch(id);
+        }}
         >
           Agregar
-        </button>
+        </Button>
       ) : (
         ""
-      )}
+        )}
+        </FlexContainer>
     </div>
   );
 }

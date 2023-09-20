@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { validation } from "../helpers/validate";
+import { FormLogin } from "../styled/formStyled";
+import { LabelLogin } from "../styled/labelStled";
 
 const Form = ({ login }) => {
   const [userData, setUserData] = useState({
@@ -43,7 +45,8 @@ const Form = ({ login }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <FormLogin onSubmit={handleSubmit}>
+      <LabelLogin>Login</LabelLogin>
       <label>Email:</label>
       <input
         type="text"
@@ -63,12 +66,11 @@ const Form = ({ login }) => {
         onChange={handleChange}
       />
       {errors.password && <span>{errors.password}</span>}
-      {errors.password && <span>{errors.password}</span>}
 
       <button disabled={diseableHandler()} type="submit">
         SUBMIT
       </button>
-    </form>
+    </FormLogin>
   );
 };
 export default Form;
